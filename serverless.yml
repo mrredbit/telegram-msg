@@ -1,0 +1,22 @@
+service: telegram-msg
+provider:
+  name: aws
+  stage: prod
+  region: eu-west-2
+  runtime: nodejs4.3
+  memorySize: 128
+functions:
+  sendMessage:
+    handler: handler.sendMessage
+    timeout: 10
+    events:
+      - http:
+          path: sendmessage
+          method: get
+  postMessage:
+    handler: handler.postMessage
+    timeout: 10
+    events:
+      - http:
+          path: messages
+          method: post
