@@ -6,7 +6,10 @@ var chatId = config.chatId;
 var bot = new TelegramBot(token);
 
 function sendMessage(msg, callback) {
-    bot.sendMessage(chatId, msg, {'parse_mode': 'HTML'}).then(()=> {
+    bot.sendMessage(chatId, msg, {
+        'parse_mode': 'HTML',
+        'disable_web_page_preview': true
+    }).then(()=> {
         console.log('Send Success');
         const response = {
             statusCode: 200,
